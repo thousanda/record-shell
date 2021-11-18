@@ -17,5 +17,9 @@ rec ./temp.wav
 # convert by ffmpeg
 read -p "convert? y/[n]: " willConvert
 if [ "$willConvert" = "y" ]; then
-    ffmpeg -i ./temp.wav ./${TODAY}.m4a
+    read -p "coutput m4a name [${TODAY}.m4a]: " outname
+    if [ "$outname" == "" ]; then
+	outname=${TODAY}.m4a
+    fi
+    ffmpeg -i ./temp.wav ./$outname	
 fi
